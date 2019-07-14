@@ -10,4 +10,6 @@ public class Config
     public static readonly string LevelScene = "Level_";
     #endregion
 
+
+    public static readonly string level = "Level";
 }

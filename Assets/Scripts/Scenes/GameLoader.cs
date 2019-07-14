@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameLoader : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Assert.IsNotNull(loadingBar);
+        Assert.IsNotNull(sceneController);
+
         sceneController.LoadScene(Config.MainScene, loadingBar);
     }
 

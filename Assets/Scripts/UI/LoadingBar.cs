@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class LoadingBar : MonoBehaviour
@@ -7,6 +8,7 @@ public class LoadingBar : MonoBehaviour
 
     void Start()
     {
+        Assert.IsNotNull(slider);
         slider.value = 0;
     }
 
