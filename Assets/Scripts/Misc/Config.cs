@@ -19,5 +19,19 @@ public class Config
     #endregion
 
 
+    #region animation 
+    public static readonly string Jump = "Jump";
+    public static readonly string JumpLoop = "JumpLoop";
+    public static readonly string Attack = "Attack";
+    public static readonly string Run = "Run";
+    public static readonly string Die = "Die";
+    public static readonly string Idle = "Idle";
+    public static readonly string Fall = "Fall";
+    public static readonly string GetHit = "GetHit";
+    public static readonly string IsDead = "IsDead";
+
+
+    #endregion
+
     public static readonly string level = "Level";
 }

@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3070535488820765050}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  jumpPower: 1
+  jumpPower: 8
   Joystick: {fileID: 0}
   rigidbody: {fileID: 3070535487884639525}
   jumpButton: {fileID: 0}
