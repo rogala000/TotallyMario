@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(rigidbody.velocity.y == 0)
+        if(rigidbody.velocity.y == 0 || (rigidbody.velocity.y < -delta && animator.GetBool(Config.Fall)))
         {
             animator.SetBool(Config.JumpLoop, false);
             animator.SetBool(Config.Fall, false);
