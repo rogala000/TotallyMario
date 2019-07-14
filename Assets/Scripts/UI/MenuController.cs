@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using GameAnalyticsSDK;
 
 public class MenuController : MonoBehaviour
 {
@@ -35,19 +36,19 @@ public class MenuController : MonoBehaviour
 
     void GoToLevelSelect()
     {
-        Debug.Log("Level select clicked");
+        GameAnalytics.NewDesignEvent(Config.GoToLevelSelect);
         levelSelectPopup.ShowPopup();
     }
 
     void GoToCredits()
     {
-        Debug.Log("Credits clicked");
+        GameAnalytics.NewDesignEvent(Config.GoToCredits);
         creditsPopup.ShowPopup();
     }
 
     void GoToOptions()
     {
-        Debug.Log("Options clicked");
+        GameAnalytics.NewDesignEvent(Config.GoToOptions);
         optionsPopup.ShowPopup();
     }
 
