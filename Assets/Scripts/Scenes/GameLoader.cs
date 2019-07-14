@@ -13,7 +13,7 @@ public class GameLoader : MonoBehaviour
     {
         Assert.IsNotNull(loadingBar);
         Assert.IsNotNull(sceneController);
-
+        GameAnalyticsSDK.GameAnalytics.Initialize();
         sceneController.LoadScene(Config.MainScene, loadingBar);
     }
 
