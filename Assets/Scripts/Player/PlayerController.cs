@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private float delta = 0.5f;
     private bool isDead = false;
-
+    private bool canJump = true;
     private void Start()
     {
         jumpButton.onClick.AddListener(Jump);
@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
         float h = Joystick.Horizontal;
         camera.transform.position = new Vector3(transform.position.x, camera.transform.position.y, camera.transform.position.z);
-     //   Vector3 translate = (new Vector3(h, 0, 0) * Time.fixedDeltaTime) * Speed;
-    //    transform.Translate(translate);
         rigidbody.velocity = new Vector2(h * Speed, rigidbody.velocity.y);
 
 #if UNITY_EDITOR
@@ -62,57 +60,57 @@ public class PlayerController : MonoBehaviour
         if (rigidbody.velocity.y < -delta && !animator.GetBool(Config.JumpLoop))
         {
             animator.SetBool(Config.Fall, true);
+            canJump = false;
         }
         else if (rigidbody.velocity.y < 0 && animator.GetBool(Config.JumpLoop))
         {
             animator.SetBool(Config.Fall, true);
+            canJump = false;
         }
 
         if (rigidbody.velocity.y > delta)
         {
             animator.SetBool(Config.JumpLoop, true);
             animator.SetBool(Config.Fall, false);
+            canJump = false;
         }
+    
 
-
-        if(rigidbody.velocity.y == 0 || (rigidbody.velocity.y < -delta && animator.GetBool(Config.Fall)))
+        if(rigidbody.velocity.y == 0 || (rigidbody.velocity.y > -delta && animator.GetBool(Config.Fall)))
         {
             animator.SetBool(Config.JumpLoop, false);
             animator.SetBool(Config.Fall, false);
+            canJump = true;
         }
 
         if (rigidbody.velocity.x > delta)
         {
             characterSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool(Config.Run, true);
-            Debug.Log("running right");
         }
         else if(rigidbody.velocity.x < -delta)
         {
             characterSprite.transform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool(Config.Run, true);
-            Debug.Log("running left");
 
         }
         else
         {
             animator.SetBool(Config.Run, false);
-            Debug.Log("idling");
 
         }
 
-        Debug.Log(rigidbody.velocity.x);
-        Debug.Log(rigidbody.velocity.y);
-        Debug.Log("####");
     }
 
     private void Jump()
     {
-        if(rigidbody.velocity.y == 0)
-        {
-            rigidbody.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
-            animator.SetTrigger(Config.Jump);
-        }
+        if (!canJump)
+            return;
+        
+        rigidbody.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+        animator.SetBool(Config.JumpLoop, true);
+        animator.SetTrigger(Config.Jump);
+        canJump = false;
     }
 
     public void Die()
