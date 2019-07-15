@@ -16,14 +16,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject characterSprite;
 
     private float delta = 0.5f;
+    private bool isDead = false;
 
     private void Start()
     {
         jumpButton.onClick.AddListener(Jump);
+        isDead = false;
     }
 
     void FixedUpdate()
     {
+
+        if(isDead)
+        {
+            return;
+        }
+
         float h = Joystick.Horizontal;
         camera.transform.position = new Vector3(transform.position.x, camera.transform.position.y, camera.transform.position.z);
      //   Vector3 translate = (new Vector3(h, 0, 0) * Time.fixedDeltaTime) * Speed;
@@ -105,6 +113,13 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
             animator.SetTrigger(Config.Jump);
         }
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        animator.SetBool(Config.IsDead, true);
+        // TODO END GAME
     }
 
 }
