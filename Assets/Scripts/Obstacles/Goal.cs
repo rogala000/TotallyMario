@@ -20,12 +20,13 @@ public class Goal : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             animator.SetTrigger(Config.Goal);
-            WinGame();
+            StartCoroutine(WinGame());
         }
     }
 
-    private void WinGame()
+    IEnumerator WinGame()
     {
+        yield return new WaitForSeconds(2);
         victoryScreen.WinGame();
     }
 
