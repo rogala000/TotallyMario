@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject characterSprite;
-
+    private DefeatScreen defeat;
     private float delta = 0.5f;
     private bool isDead = false;
     private bool canJump = true;
     private void Start()
     {
         jumpButton.onClick.AddListener(Jump);
+        defeat = FindObjectOfType<DefeatScreen>();
         isDead = false;
     }
 
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         animator.SetBool(Config.IsDead, true);
-        // TODO END GAME
+        defeat.Defeat();
     }
 
 }
