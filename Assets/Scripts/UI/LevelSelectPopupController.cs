@@ -27,7 +27,9 @@ public class LevelSelectPopupController : MonoBehaviour
         int stars = 0;
         for (int i = 0; i < levelButtons.Count; i++)
         {
-            stars = PlayerPrefsLevels.GetLevelStars(i);
+            int levelNumber = i + 1;
+            string levelName = Config.LevelScene + levelNumber.ToString();
+            stars = PlayerPrefsLevels.GetLevelStars(levelName);
             ShowLevelStars(levelButtons[i], stars);
         }
 

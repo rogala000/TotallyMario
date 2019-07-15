@@ -2,15 +2,19 @@
 
 public class PlayerPrefsLevels
 {
-    public static void SaveLevel(int levelID, int numberOfStars)
+    public static void SaveLevel(string levelName, int numberOfStars)
     {
-        string levelName = Config.LevelScene + levelID.ToString();
+        int oldStars = GetLevelStars(levelName);
+
+        if(oldStars > numberOfStars)
+        {
+            return;
+        }
         PlayerPrefs.SetInt(levelName, numberOfStars);
     }
 
-    public static int GetLevelStars(int levelID)
+    public static int GetLevelStars(string levelName)
     {
-        string levelName = Config.LevelScene + levelID.ToString();
         int levelStars = PlayerPrefs.GetInt(levelName);
         return levelStars;
     }

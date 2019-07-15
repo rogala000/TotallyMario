@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour
     private int currentFrames = 0;
     private bool canGetHit = true;
 
+    public int RemainingLives { get => remainingLives;}
+    public int MaxLives { get => maxLives;}
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();

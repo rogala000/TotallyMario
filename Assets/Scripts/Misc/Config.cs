@@ -29,8 +29,7 @@ public class Config
     public static readonly string Fall = "Fall";
     public static readonly string GetHit = "GetHit";
     public static readonly string IsDead = "IsDead";
-
-
+    public static readonly string Goal = "ReachGoal";
     #endregion
 
     public static readonly string level = "Level";
