@@ -51,13 +51,15 @@ public class Enemy : MonoBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             playerHealth.GetHit();
         }
-        else if (collision.gameObject.tag == "Weapon")
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Weapon")
         {
             Destroy(this.gameObject);
         }
     }
-
-
 
 
 }

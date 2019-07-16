@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bl_Joystick Joystick;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Button jumpButton;
+    [SerializeField] private Button attackButton;
     [SerializeField] private Camera camera;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject characterSprite;
@@ -18,9 +19,12 @@ public class PlayerController : MonoBehaviour
     private float delta = 0.5f;
     private bool isDead = false;
     private bool canJump = true;
+
+
     private void Start()
     {
         jumpButton.onClick.AddListener(Jump);
+        attackButton.onClick.AddListener(Attack);
         defeat = FindObjectOfType<DefeatScreen>();
         isDead = false;
     }
@@ -119,6 +123,11 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         animator.SetBool(Config.IsDead, true);
         defeat.Defeat();
+    }
+
+    private void Attack()
+    {
+        animator.SetTrigger(Config.Attack);
     }
 
 }
