@@ -33,4 +33,6 @@ public class Config
     #endregion
 
     public static readonly string level = "Level";
+    public static readonly string sounds = "sounds";
+
 }
