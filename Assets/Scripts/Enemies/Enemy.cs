@@ -9,17 +9,26 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform startRoute;
     [SerializeField] Transform endRoute;
     private SpriteRenderer spriteRenderer;
-
+    private Animator animator;
+    private Collider2D collider;
     public float speed = 1.0f;
     private bool dirRight = true;
+    private bool isDead = false;
 
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
+        collider = GetComponentInChildren<Collider2D>();
     }
 
     void Update()
     {
+        if(isDead)
+        {
+            return;
+        }
+
         if (dirRight)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
@@ -57,7 +66,10 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            Destroy(this.gameObject);
+            collider.enabled = false;
+            isDead = true;
+            animator.SetTrigger("Die");
+            Destroy(this.gameObject, 2);
         }
     }
 
