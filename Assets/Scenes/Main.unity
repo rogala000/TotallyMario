@@ -2646,6 +2646,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 43.6
       objectReference: {fileID: 0}
+    - target: {fileID: 268095071533766442, guid: e0d1bdd34170db94399a89dfa3c7afd2,
+        type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734718377912771528, guid: e0d1bdd34170db94399a89dfa3c7afd2,
+        type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453330721939775143, guid: e0d1bdd34170db94399a89dfa3c7afd2,
+        type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359628348876748634, guid: e0d1bdd34170db94399a89dfa3c7afd2,
+        type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d1bdd34170db94399a89dfa3c7afd2, type: 3}
 --- !u!1 &9197374768646773961 stripped

@@ -103,11 +103,13 @@ public class PlayerController : MonoBehaviour
         if (rigidbody.velocity.x > delta)
         {
             characterSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
+            characterSprite.transform.localPosition = Vector3.zero;
             animator.SetBool(Config.Run, true);
         }
         else if(rigidbody.velocity.x < -delta)
         {
             characterSprite.transform.rotation = Quaternion.Euler(0, 180, 0);
+            characterSprite.transform.localPosition = new Vector3(-0.7f, 0, 0);
             animator.SetBool(Config.Run, true);
 
         }
