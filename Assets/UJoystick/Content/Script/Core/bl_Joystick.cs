@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Assertions;
 
 public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
@@ -25,7 +26,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private int lastId = -2;
     private Image stickImage;
     private Image backImage;
-    private Canvas m_Canvas;
+    [SerializeField] private Canvas m_Canvas;
     private float diff;
     private Vector3 PressScaleVector;
 
@@ -40,21 +41,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             this.enabled = false;
             return;
         }
-
-        if (transform.root.GetComponent<Canvas>() != null)
-        {
-            m_Canvas = transform.root.GetComponent<Canvas>();
-        }
-        else if (transform.root.GetComponentInChildren<Canvas>() != null)
-        {
-            m_Canvas = transform.root.GetComponentInChildren<Canvas>();
-        }
-        else
-        {
-            Debug.LogError("Required at lest one canvas for joystick work.!");
-            this.enabled = false;
-            return;
-        }
+        Assert.IsNotNull(m_Canvas);
        
         //Get the default area of joystick
         DeathArea = CenterReference.position;
@@ -125,7 +112,7 @@ public class bl_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             isFree = false;
             //Get Position of current touch
             Vector3 position = bl_JoystickUtils.TouchPosition(m_Canvas,GetTouchID);
-
+            Debug.Log(position.x + " " + position.y + " " + position.z);
             //Rotate into the area circumferential of joystick
             if (Vector2.Distance(DeathArea, position) < radio)
             {

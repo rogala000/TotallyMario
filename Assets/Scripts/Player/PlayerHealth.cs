@@ -5,19 +5,21 @@ using UnityEngine.Assertions;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] List<GameObject> hearts;
+    List<GameObject> hearts;
     private int remainingLives = 3;
     [SerializeField] private int maxLives = 3;
     private PlayerController playerController;
     [SerializeField] int iFrames = 30;
     private int currentFrames = 0;
     private bool canGetHit = true;
-
+    private PlayerControlsCanvas playerControlsCanvas;
     public int RemainingLives { get => remainingLives;}
     public int MaxLives { get => maxLives;}
 
     void Start()
     {
+        playerControlsCanvas = FindObjectOfType<PlayerControlsCanvas>();
+        hearts = playerControlsCanvas.Hearts;
         playerController = GetComponent<PlayerController>();
         Assert.IsNotNull(hearts);
         remainingLives = maxLives;

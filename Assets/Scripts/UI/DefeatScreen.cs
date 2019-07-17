@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameAnalyticsSDK;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,9 +10,7 @@ public class DefeatScreen : MonoBehaviour
 
     [SerializeField] Button tryAgainButton;
     [SerializeField] Button continueButton;
-    [SerializeField] LoadingBar loadingSlider;
     [SerializeField] GameObject screenView;
-    [SerializeField] GameObject loadingView;
 
     private void Start()
     {
@@ -19,25 +18,23 @@ public class DefeatScreen : MonoBehaviour
         continueButton.onClick.AddListener(Continue);
         tryAgainButton.onClick.AddListener(Restart);
         screenView.SetActive(false);
-        loadingView.SetActive(false);
     }
 
 
     public void Defeat()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, SceneManager.GetActiveScene().name);
         screenView.SetActive(true);
     }
 
 
     private void Restart()
     {
-        loadingView.SetActive(true);
-        sceneController.LoadScene(SceneManager.GetActiveScene().name, loadingSlider);
+        sceneController.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Continue()
     {
-        loadingView.SetActive(true);
-        sceneController.LoadScene(Config.MainScene, loadingSlider);
+        sceneController.LoadScene(Config.MainScene);
     }
 }

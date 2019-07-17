@@ -1,20 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 public class GameLoader : MonoBehaviour
 {
 
-    [SerializeField] LoadingBar loadingBar;
-    [SerializeField] SceneController sceneController;
-    // Start is called before the first frame update
+    SceneController sceneController;
+
     void Start()
     {
-        Assert.IsNotNull(loadingBar);
-        Assert.IsNotNull(sceneController);
+        sceneController = FindObjectOfType<SceneController>();
         GameAnalyticsSDK.GameAnalytics.Initialize();
-        sceneController.LoadScene(Config.MainScene, loadingBar);
+        sceneController.LoadScene(Config.MainScene);
     }
 
 }

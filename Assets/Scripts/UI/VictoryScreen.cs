@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GameAnalyticsSDK;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,9 +17,7 @@ public class VictoryScreen : MonoBehaviour
     [SerializeField] List<Image> stars;
     [SerializeField] Color32 unlockedStarColor;
     [SerializeField] Color32 lockedStarColor;
-    [SerializeField] LoadingBar loadingSlider;
     [SerializeField] GameObject screenView;
-    [SerializeField] GameObject loadingView;
 
     private void Start()
     {
@@ -27,12 +26,12 @@ public class VictoryScreen : MonoBehaviour
         continueButton.onClick.AddListener(Continue);
         tryAgainButton.onClick.AddListener(Restart);
         screenView.SetActive(false);
-        loadingView.SetActive(false);
     }
 
 
     public void WinGame()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, SceneManager.GetActiveScene().name);
         remainingLives = playerHealth.RemainingLives;
         maxLives = playerHealth.MaxLives;
 
@@ -55,15 +54,13 @@ public class VictoryScreen : MonoBehaviour
 
     private void Restart()
     {
-        loadingView.SetActive(true);
-        sceneController.LoadScene(SceneManager.GetActiveScene().name, loadingSlider);
+        sceneController.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Continue()
     {
-        loadingView.SetActive(true);
         PlayerPrefsLevels.SaveLevel(SceneManager.GetActiveScene().name, remainingLives);
-        sceneController.LoadScene(Config.MainScene, loadingSlider);
+        sceneController.LoadScene(Config.MainScene);
     }
     
 }

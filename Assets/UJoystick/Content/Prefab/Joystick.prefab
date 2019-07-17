@@ -206,3 +206,4 @@ MonoBehaviour:
   Duration: 1
   StickRect: {fileID: 22449040}
   CenterReference: {fileID: 22496700}
+  m_Canvas: {fileID: 0}

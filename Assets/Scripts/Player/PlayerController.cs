@@ -8,25 +8,37 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float Speed = 1;
     [SerializeField] private float jumpPower = 1;
-    [SerializeField] private bl_Joystick Joystick;
+     private bl_Joystick joystick;
     [SerializeField] private Rigidbody2D rigidbody;
-    [SerializeField] private Button jumpButton;
-    [SerializeField] private Button attackButton;
-    [SerializeField] private Camera camera;
+    private Button jumpButton;
+    private Button attackButton;
+    private Button optionsButton;
+
+    private Camera camera;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject characterSprite;
     private DefeatScreen defeat;
     private float delta = 0.5f;
     private bool isDead = false;
     private bool canJump = true;
-
+    private InGameOptions options;
+    private PlayerControlsCanvas playerControls;
 
     private void Start()
     {
+        playerControls = FindObjectOfType<PlayerControlsCanvas>();
+        attackButton = playerControls.AttackButton;
+        jumpButton = playerControls.JumpButton;
+        optionsButton = playerControls.OptionsButton;
+        joystick = playerControls.Joystick;
+
         jumpButton.onClick.AddListener(Jump);
         attackButton.onClick.AddListener(Attack);
         defeat = FindObjectOfType<DefeatScreen>();
         isDead = false;
+        camera = Camera.main;
+        options = FindObjectOfType<InGameOptions>();
+        optionsButton.onClick.AddListener(GoToOptions);
     }
 
     void FixedUpdate()
@@ -37,7 +49,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float h = Joystick.Horizontal;
+        float h = joystick.Horizontal;
         camera.transform.position = new Vector3(transform.position.x, camera.transform.position.y, camera.transform.position.z);
         rigidbody.velocity = new Vector2(h * Speed, rigidbody.velocity.y);
 
@@ -128,6 +140,11 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         animator.SetTrigger(Config.Attack);
+    }
+
+    private void GoToOptions()
+    {
+        options.GoToOptions();
     }
 
 }

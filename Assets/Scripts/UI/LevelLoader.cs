@@ -6,14 +6,12 @@ using UnityEngine.Assertions;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] GameObject levelLoaderGameObject;
-    [SerializeField] LoadingBar slider;
-    [SerializeField] SceneController sceneController;
+    SceneController sceneController;
 
     private void Start()
     {
         Assert.IsNotNull(levelLoaderGameObject);
-        Assert.IsNotNull(slider);
-        Assert.IsNotNull(sceneController);
+        sceneController = FindObjectOfType<SceneController>();
 
     }
 
@@ -21,6 +19,6 @@ public class LevelLoader : MonoBehaviour
     {
         string levelName = Config.LevelScene + id.ToString();
         levelLoaderGameObject.SetActive(true);
-        sceneController.LoadScene(levelName, slider);
+        sceneController.LoadScene(levelName);
     }
 }

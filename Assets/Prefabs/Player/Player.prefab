@@ -53,7 +53,8 @@ MonoBehaviour:
   Joystick: {fileID: 0}
   rigidbody: {fileID: 340645399}
   jumpButton: {fileID: 0}
-  camera: {fileID: 0}
+  attackButton: {fileID: 0}
+  optionsButton: {fileID: 0}
   animator: {fileID: 6350077382781261625}
   characterSprite: {fileID: 9115530142100124795}
 --- !u!61 &340645397
@@ -95,7 +96,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.43, y: -0.62}
+  m_Offset: {x: -0.43, y: -0.56}
   serializedVersion: 2
   m_Radius: 0.44
 --- !u!50 &340645399

@@ -2,29 +2,37 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
-
-    public void LoadScene(string sceneName, LoadingBar slider)
+    [SerializeField] LoadingBar slider;
+    [SerializeField] GameObject sliderView;
+    private void Start()
     {
-        StartCoroutine(LoadNewScene(sceneName, slider));
+        DontDestroyOnLoad(this);
+        sliderView.SetActive(false);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        StartCoroutine(LoadNewScene(sceneName));
         GameAnalytics.NewDesignEvent(Config.LevelStarted + sceneName);
     }
 
 
 
-    IEnumerator LoadNewScene(string sceneName, LoadingBar sliderBar)
+    IEnumerator LoadNewScene(string sceneName)
     {
+        sliderView.SetActive(true);
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
         while (!async.isDone)
         {
             float progress = Mathf.Clamp01(async.progress / 1f);
-            sliderBar.SetValue(progress);
+            slider.SetValue(progress);
             yield return null;
 
         }
+        sliderView.SetActive(false);
 
     }
 
