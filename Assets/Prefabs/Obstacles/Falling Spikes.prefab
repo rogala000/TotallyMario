@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikesTransform: {fileID: 5872826880716414934}
-  speed: 1
+  speed: 0.3
 --- !u!61 &3289917188165349880
 BoxCollider2D:
   m_ObjectHideFlags: 0

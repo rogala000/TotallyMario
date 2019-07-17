@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class VictoryScreen : MonoBehaviour
 {
     private PlayerHealth playerHealth;
     int remainingLives;
     int maxLives;
+    private AudioSource audioSource;
     SceneController sceneController;
 
     [SerializeField] Button tryAgainButton;
@@ -21,6 +23,7 @@ public class VictoryScreen : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerHealth = FindObjectOfType<PlayerHealth>();
         sceneController = FindObjectOfType<SceneController>();
         continueButton.onClick.AddListener(Continue);
@@ -34,7 +37,7 @@ public class VictoryScreen : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, SceneManager.GetActiveScene().name);
         remainingLives = playerHealth.RemainingLives;
         maxLives = playerHealth.MaxLives;
-
+        audioSource.Play();
         for (int i = 0; i < maxLives; i++)
         {
             if (remainingLives > i)

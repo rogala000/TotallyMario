@@ -15,9 +15,11 @@ public class PlayerHealth : MonoBehaviour
     private PlayerControlsCanvas playerControlsCanvas;
     public int RemainingLives { get => remainingLives;}
     public int MaxLives { get => maxLives;}
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerControlsCanvas = FindObjectOfType<PlayerControlsCanvas>();
         hearts = playerControlsCanvas.Hearts;
         playerController = GetComponent<PlayerController>();
@@ -29,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+
         if(canGetHit == false)
         {
             currentFrames++;
@@ -42,12 +45,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void GetHit()
     {
-        if(!canGetHit)
+        if(!canGetHit || (remainingLives == 0))
         {
             return;
         }
 
         remainingLives-=1;
+        audioSource.Play();
         if(remainingLives == 0)
         {
             Die();

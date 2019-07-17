@@ -537,22 +537,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3925739149474226543, guid: e847aa168ef07c64ea90ad74b2265bd4,
-        type: 3}
-      propertyPath: screenView
-      value: 
-      objectReference: {fileID: 8950005476734945046}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e847aa168ef07c64ea90ad74b2265bd4, type: 3}
 --- !u!224 &6793553687602829658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1905968950061558618, guid: e847aa168ef07c64ea90ad74b2265bd4,
-    type: 3}
-  m_PrefabInstance: {fileID: 4914783701525295616}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8950005476734945046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4035259572172961046, guid: e847aa168ef07c64ea90ad74b2265bd4,
     type: 3}
   m_PrefabInstance: {fileID: 4914783701525295616}
   m_PrefabAsset: {fileID: 0}

@@ -14,9 +14,11 @@ public class Enemy : MonoBehaviour
     public float speed = 1.0f;
     private bool dirRight = true;
     private bool isDead = false;
+    private AudioSource AudioSource;
 
     private void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         collider = GetComponentInChildren<Collider2D>();
@@ -66,6 +68,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
+            AudioSource.Play();
             collider.enabled = false;
             isDead = true;
             animator.SetTrigger("Die");

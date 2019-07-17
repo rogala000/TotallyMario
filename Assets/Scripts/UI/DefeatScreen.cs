@@ -3,17 +3,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class DefeatScreen : MonoBehaviour
 {
 
     SceneController sceneController;
-
+    private AudioSource audioSource;
     [SerializeField] Button tryAgainButton;
     [SerializeField] Button continueButton;
     [SerializeField] GameObject screenView;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sceneController = FindObjectOfType<SceneController>();
         continueButton.onClick.AddListener(Continue);
         tryAgainButton.onClick.AddListener(Restart);
@@ -23,6 +25,7 @@ public class DefeatScreen : MonoBehaviour
 
     public void Defeat()
     {
+        audioSource.Play();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, SceneManager.GetActiveScene().name);
         screenView.SetActive(true);
     }

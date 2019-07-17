@@ -7,7 +7,7 @@ public class FallingSpikes : MonoBehaviour
 
     [SerializeField] Transform spikesTransform;
     bool isTrapTriggered = false;
-    [SerializeField] private int speed = 1;
+    [SerializeField] private float speed = 0.3f;
     
 
     void Update()
@@ -21,5 +21,12 @@ public class FallingSpikes : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isTrapTriggered = true;
+        StartCoroutine(DisableTrap());
+    }
+
+    IEnumerator DisableTrap()
+    {
+        yield return new WaitForSeconds(5);
+        isTrapTriggered = false;
     }
 }
