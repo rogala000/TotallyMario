@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     private InGameOptions options;
     private PlayerControlsCanvas playerControls;
 
+    private bool jumpOnCooldown = false;
+    private float currentJumpCooldown = 0f;
+    [SerializeField] private float jumpCooldown = 2f;
+
     private void Start()
     {
         playerControls = FindObjectOfType<PlayerControlsCanvas>();
@@ -116,20 +120,30 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool(Config.Run, false);
+        }
 
+        if(jumpOnCooldown)
+        {
+            currentJumpCooldown += Time.fixedDeltaTime;
+            if(currentJumpCooldown >= jumpCooldown)
+            {
+                currentJumpCooldown = 0f;
+                jumpOnCooldown = false;
+            }
         }
 
     }
 
     private void Jump()
     {
-        if (!canJump)
+        if (!canJump || jumpOnCooldown)
             return;
         
         rigidbody.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
         animator.SetBool(Config.JumpLoop, true);
         animator.SetTrigger(Config.Jump);
         canJump = false;
+        jumpOnCooldown = true;
     }
 
     public void Die()
