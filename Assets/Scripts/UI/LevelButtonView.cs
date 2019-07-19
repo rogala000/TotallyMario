@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,9 +17,11 @@ public class LevelButtonView : MonoBehaviour
 
     private void Start()
     {
+        #region Assertions
         Assert.IsNotNull(button);
         Assert.IsNotNull(stars);
         Assert.IsNotNull(levelNumber);
+        #endregion
 
     }
 }

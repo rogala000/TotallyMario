@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Sign : MonoBehaviour
 {
-    [SerializeField] GameObject message;
+    [SerializeField] private GameObject message;
 
     private void Start()
     {
+        #region Assertions
         Assert.IsNotNull(message);
+        #endregion
         message.SetActive(false);
     }
 

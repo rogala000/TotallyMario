@@ -1,31 +1,43 @@
 ﻿using GameAnalyticsSDK;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class VictoryScreen : MonoBehaviour
-{
-    private PlayerHealth playerHealth;
-    int remainingLives;
-    int maxLives;
-    private AudioSource audioSource;
-    SceneController sceneController;
+{ 
+    [SerializeField] private Button tryAgainButton;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private List<Image> stars;
+    [SerializeField] private Color32 unlockedStarColor;
+    [SerializeField] private Color32 lockedStarColor;
+    [SerializeField] private GameObject screenView;
 
-    [SerializeField] Button tryAgainButton;
-    [SerializeField] Button continueButton;
-    [SerializeField] List<Image> stars;
-    [SerializeField] Color32 unlockedStarColor;
-    [SerializeField] Color32 lockedStarColor;
-    [SerializeField] GameObject screenView;
+    private PlayerHealth playerHealth;
+    private int remainingLives;
+    private int maxLives;
+    private AudioSource audioSource;
+    private SceneController sceneController;
+
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         playerHealth = FindObjectOfType<PlayerHealth>();
         sceneController = FindObjectOfType<SceneController>();
+
+        #region Assertions
+        Assert.IsNotNull(audioSource);
+        Assert.IsNotNull(playerHealth);
+        Assert.IsNotNull(sceneController);
+        Assert.IsNotNull(tryAgainButton);
+        Assert.IsNotNull(continueButton);
+        Assert.IsNotNull(stars);
+        Assert.IsNotNull(screenView);
+        #endregion
+
         continueButton.onClick.AddListener(Continue);
         tryAgainButton.onClick.AddListener(Restart);
         screenView.SetActive(false);

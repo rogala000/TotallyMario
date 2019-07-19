@@ -1,27 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
 
     [SerializeField] float impactForce = 1f;
     [SerializeField] Transform startRoute;
     [SerializeField] Transform endRoute;
+    [SerializeField] private float speed = 1.0f;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Collider2D collider;
-    public float speed = 1.0f;
+    private AudioSource audioSource;
     private bool dirRight = true;
     private bool isDead = false;
-    private AudioSource AudioSource;
+
 
     private void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         collider = GetComponentInChildren<Collider2D>();
+
+        #region Assertions
+        Assert.IsNotNull(startRoute);
+        Assert.IsNotNull(endRoute);
+        Assert.IsNotNull(spriteRenderer);
+        Assert.IsNotNull(animator);
+        Assert.IsNotNull(collider);
+        Assert.IsNotNull(audioSource);
+        #endregion
     }
 
     void Update()
@@ -68,7 +80,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            AudioSource.Play();
+            audioSource.Play();
             collider.enabled = false;
             isDead = true;
             animator.SetTrigger("Die");

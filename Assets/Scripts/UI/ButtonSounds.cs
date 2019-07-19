@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class ButtonSounds : MonoBehaviour
@@ -11,6 +12,12 @@ public class ButtonSounds : MonoBehaviour
     {
         button = GetComponent<Button>();
         audio = GetComponent<AudioSource>();
+
+        #region Assertions
+        Assert.IsNotNull(button);
+        Assert.IsNotNull(audio);
+        #endregion
+
         button.onClick.AddListener(PlaySound);
     }
 

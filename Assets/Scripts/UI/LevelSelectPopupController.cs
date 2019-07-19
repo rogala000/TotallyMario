@@ -1,17 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 public class LevelSelectPopupController : MonoBehaviour
 {
 
-    [SerializeField] List<LevelButtonView> levelButtons;
-    [SerializeField] LevelLoader levelLoader;
+    [SerializeField] private List<LevelButtonView> levelButtons;
+    [SerializeField] private LevelLoader levelLoader;
+
     void Start()
     {
+        #region Assertions
         Assert.IsNotNull(levelLoader);
         Assert.IsNotNull(levelButtons);
+        #endregion
 
         for (int i = 0; i < levelButtons.Count; i++)
         {

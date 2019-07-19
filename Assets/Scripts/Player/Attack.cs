@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] Collider2D weaponCollider;
+    [SerializeField] private Collider2D weaponCollider;
 
     private void Start()
     {
+        #region Assertions
+        Assert.IsNotNull(weaponCollider);
+        #endregion
+
         weaponCollider.enabled = false;
     }
 

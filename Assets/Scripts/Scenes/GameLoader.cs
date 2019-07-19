@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameLoader : MonoBehaviour
 {
 
-    SceneController sceneController;
+    private SceneController sceneController;
 
     void Start()
     {
         sceneController = FindObjectOfType<SceneController>();
+
+        #region Assertions
+        Assert.IsNotNull(sceneController);
+        #endregion
+
         GameAnalyticsSDK.GameAnalytics.Initialize();
         sceneController.LoadScene(Config.MainScene);
     }

@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -8,41 +7,60 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float Speed = 1;
     [SerializeField] private float jumpPower = 1;
-     private bl_Joystick joystick;
+    [SerializeField] private float jumpCooldown = 2f;
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject characterSprite;
+
+    private bl_Joystick joystick;
     private Button jumpButton;
     private Button attackButton;
     private Button optionsButton;
-
     private Camera camera;
-    [SerializeField] private Animator animator;
-    [SerializeField] private GameObject characterSprite;
     private DefeatScreen defeat;
-    private float delta = 0.5f;
-    private bool isDead = false;
-    private bool canJump = true;
     private InGameOptions options;
     private PlayerControlsCanvas playerControls;
 
-    private bool jumpOnCooldown = false;
+    private float delta = 0.5f;
     private float currentJumpCooldown = 0f;
-    [SerializeField] private float jumpCooldown = 2f;
+
+    private bool jumpOnCooldown = false;
+    private bool isDead = false;
+    private bool canJump = true;
+
 
     private void Start()
     {
         playerControls = FindObjectOfType<PlayerControlsCanvas>();
+        defeat = FindObjectOfType<DefeatScreen>();
+        options = FindObjectOfType<InGameOptions>();
+        camera = Camera.main;
+
         attackButton = playerControls.AttackButton;
         jumpButton = playerControls.JumpButton;
         optionsButton = playerControls.OptionsButton;
         joystick = playerControls.Joystick;
 
+        #region Assertions
+        Assert.IsNotNull(rigidbody);
+        Assert.IsNotNull(animator);
+        Assert.IsNotNull(characterSprite);
+        Assert.IsNotNull(joystick);
+        Assert.IsNotNull(jumpButton);
+        Assert.IsNotNull(attackButton);
+        Assert.IsNotNull(optionsButton);
+        Assert.IsNotNull(camera);
+        Assert.IsNotNull(defeat);
+        Assert.IsNotNull(options);
+        Assert.IsNotNull(playerControls);
+        #endregion
+
+        optionsButton.onClick.AddListener(GoToOptions);
         jumpButton.onClick.AddListener(Jump);
         attackButton.onClick.AddListener(Attack);
-        defeat = FindObjectOfType<DefeatScreen>();
         isDead = false;
-        camera = Camera.main;
-        options = FindObjectOfType<InGameOptions>();
-        optionsButton.onClick.AddListener(GoToOptions);
+
+
     }
 
     void FixedUpdate()

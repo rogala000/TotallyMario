@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 
 public class InGameOptions : MonoBehaviour
 {
@@ -11,9 +11,18 @@ public class InGameOptions : MonoBehaviour
 
     void Start()
     {
+        sceneController = FindObjectOfType<SceneController>();
+
+        #region Assertions
+        Assert.IsNotNull(returnButton);
+        Assert.IsNotNull(exitButton);
+        Assert.IsNotNull(optionsView);
+        Assert.IsNotNull(sceneController);
+        #endregion
+
         returnButton.onClick.AddListener(Return);
         exitButton.onClick.AddListener(Quit);
-        sceneController = FindObjectOfType<SceneController>();
+
         optionsView.SetActive(false);
     }
 

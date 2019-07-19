@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -11,8 +10,13 @@ public class Goal : MonoBehaviour
 
     private void Start()
     {
-        Assert.IsNotNull(animator);
         victoryScreen = FindObjectOfType<VictoryScreen>();
+
+        #region Assertions
+        Assert.IsNotNull(animator);
+        Assert.IsNotNull(victoryScreen);
+        #endregion
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,7 +8,10 @@ public class LoadingBar : MonoBehaviour
 
     void Start()
     {
+        #region Assertions
         Assert.IsNotNull(slider);
+        #endregion
+
         slider.value = 0;
     }
 

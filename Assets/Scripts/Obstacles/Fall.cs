@@ -1,11 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Fall : MonoBehaviour
 {
 
-    [SerializeField] Transform respawnPosition;
+    [SerializeField] private Transform respawnPosition;
+
+    private void Start()
+    {
+        #region Assertions
+        Assert.IsNotNull(respawnPosition);
+        #endregion
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
 public class PlayerHealth : MonoBehaviour
 {
-    List<GameObject> hearts;
-    private int remainingLives = 3;
+
     [SerializeField] private int maxLives = 3;
+    [SerializeField] private int iFrames = 30;
+
+    private List<GameObject> hearts;
     private PlayerController playerController;
-    [SerializeField] int iFrames = 30;
+    private PlayerControlsCanvas playerControlsCanvas;
+    private AudioSource audioSource;
+
+    private int remainingLives = 3;
     private int currentFrames = 0;
     private bool canGetHit = true;
-    private PlayerControlsCanvas playerControlsCanvas;
+
     public int RemainingLives { get => remainingLives;}
     public int MaxLives { get => maxLives;}
-    private AudioSource audioSource;
 
     void Start()
     {
@@ -23,7 +26,15 @@ public class PlayerHealth : MonoBehaviour
         playerControlsCanvas = FindObjectOfType<PlayerControlsCanvas>();
         hearts = playerControlsCanvas.Hearts;
         playerController = GetComponent<PlayerController>();
+
+        #region Assertions
         Assert.IsNotNull(hearts);
+        Assert.IsNotNull(audioSource);
+        Assert.IsNotNull(playerControlsCanvas);
+        Assert.IsNotNull(hearts);
+        Assert.IsNotNull(playerController);
+        #endregion
+
         remainingLives = maxLives;
         SetLives(remainingLives);
         currentFrames = 0;

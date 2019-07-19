@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] GameObject levelLoaderGameObject;
-    SceneController sceneController;
+    [SerializeField] private GameObject levelLoaderGameObject;
+
+    private SceneController sceneController;
 
     private void Start()
     {
-        Assert.IsNotNull(levelLoaderGameObject);
         sceneController = FindObjectOfType<SceneController>();
+
+        #region Assertions
+        Assert.IsNotNull(levelLoaderGameObject);
+        Assert.IsNotNull(sceneController);
+        #endregion
 
     }
 

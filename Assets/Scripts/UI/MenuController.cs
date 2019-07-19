@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using GameAnalyticsSDK;
@@ -7,18 +6,18 @@ using GameAnalyticsSDK;
 public class MenuController : MonoBehaviour
 {
 
-    [SerializeField] Button levelSelectButton;
-    [SerializeField] Button optionsButton;
-    [SerializeField] Button creditsButton;
-    [SerializeField] Button exitButton;
+    [SerializeField] private Button levelSelectButton;
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private Button creditsButton;
+    [SerializeField] private Button exitButton;
 
-    [SerializeField] PopupController levelSelectPopup;
-    [SerializeField] PopupController optionsPopup;
-    [SerializeField] PopupController creditsPopup;
+    [SerializeField] private PopupController levelSelectPopup;
+    [SerializeField] private PopupController optionsPopup;
+    [SerializeField] private PopupController creditsPopup;
 
-    // Use this for initialization
     void Start()
     {
+        #region Assertions
         Assert.IsNotNull(levelSelectButton);
         Assert.IsNotNull(optionsButton);
         Assert.IsNotNull(creditsButton);
@@ -26,6 +25,7 @@ public class MenuController : MonoBehaviour
         Assert.IsNotNull(levelSelectPopup);
         Assert.IsNotNull(optionsPopup);
         Assert.IsNotNull(creditsPopup);
+        #endregion
 
         levelSelectButton.onClick.AddListener(GoToLevelSelect);
         optionsButton.onClick.AddListener(GoToOptions);

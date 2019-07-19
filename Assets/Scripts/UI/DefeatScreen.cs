@@ -1,22 +1,32 @@
 ﻿using GameAnalyticsSDK;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class DefeatScreen : MonoBehaviour
 {
-
-    SceneController sceneController;
-    private AudioSource audioSource;
     [SerializeField] Button tryAgainButton;
     [SerializeField] Button continueButton;
     [SerializeField] GameObject screenView;
+
+    private SceneController sceneController;
+    private AudioSource audioSource;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         sceneController = FindObjectOfType<SceneController>();
+
+        #region Assertions
+        Assert.IsNotNull(audioSource);
+        Assert.IsNotNull(sceneController);
+        Assert.IsNotNull(tryAgainButton);
+        Assert.IsNotNull(continueButton);
+        Assert.IsNotNull(screenView);
+        #endregion
+
         continueButton.onClick.AddListener(Continue);
         tryAgainButton.onClick.AddListener(Restart);
         screenView.SetActive(false);

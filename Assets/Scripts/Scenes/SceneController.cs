@@ -1,14 +1,21 @@
 ﻿using GameAnalyticsSDK;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] LoadingBar slider;
-    [SerializeField] GameObject sliderView;
+    [SerializeField] private LoadingBar slider;
+    [SerializeField] private GameObject sliderView;
+
     private void Start()
     {
+        #region Assertions
+        Assert.IsNotNull(slider);
+        Assert.IsNotNull(sliderView);
+        #endregion
+
         DontDestroyOnLoad(this);
         sliderView.SetActive(false);
     }
@@ -33,7 +40,6 @@ public class SceneController : MonoBehaviour
 
         }
         sliderView.SetActive(false);
-
     }
 
 }

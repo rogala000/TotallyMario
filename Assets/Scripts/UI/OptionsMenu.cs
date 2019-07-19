@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
-    [SerializeField] Button soundButton;
-    [SerializeField] GameObject checkmark;
-    [SerializeField] Button clearDataButton;
+    [SerializeField] private Button soundButton;
+    [SerializeField] private GameObject checkmark;
+    [SerializeField] private Button clearDataButton;
 
     private AudioListener listener;
     private bool soundsOff;
@@ -14,6 +14,14 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         listener = FindObjectOfType<AudioListener>();
+
+        #region Assertions
+        Assert.IsNotNull(listener);
+        Assert.IsNotNull(soundButton);
+        Assert.IsNotNull(checkmark);
+        Assert.IsNotNull(clearDataButton);
+        #endregion
+
         CheckSounds();
         clearDataButton.onClick.AddListener(ClearData);
         soundButton.onClick.AddListener(ChangeSound);

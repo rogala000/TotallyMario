@@ -1,14 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class FallingSpikes : MonoBehaviour
 {
 
-    [SerializeField] Transform spikesTransform;
-    bool isTrapTriggered = false;
+    [SerializeField] private Transform spikesTransform;
     [SerializeField] private float speed = 0.3f;
-    
+
+    bool isTrapTriggered = false;
+
+    private void Start()
+    {
+        #region Assertions
+        Assert.IsNotNull(spikesTransform);
+        #endregion
+    }
 
     void Update()
     {

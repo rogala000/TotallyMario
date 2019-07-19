@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(AudioSource))] 
 public class BackgroundMusic : MonoBehaviour
 {
-    [SerializeField] List<AudioClip> songs;
-    AudioSource audioSource;
+    [SerializeField] private List<AudioClip> songs;
+    private AudioSource audioSource;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-       // audioSource.loop = true;
+        Assert.IsNotNull(audioSource);
         StartCoroutine(playFirstSong());
         DontDestroyOnLoad(this);
     }

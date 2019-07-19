@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
+[RequireComponent(typeof(AudioSource))]
 public class Audio : MonoBehaviour
 {
     private AudioListener listener;
@@ -7,7 +9,7 @@ public class Audio : MonoBehaviour
     void Start()
     {
         listener = FindObjectOfType<AudioListener>();
-
+        Assert.IsNotNull(listener);
         int sound = PlayerPrefs.GetInt(Config.sounds);
         if (sound == 1)
         {

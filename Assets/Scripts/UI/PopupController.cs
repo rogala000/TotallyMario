@@ -1,21 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class PopupController : MonoBehaviour
 {
 
-    [SerializeField] Button closeButton;
-    [SerializeField] GameObject popupGameObject;
+    [SerializeField] private Button closeButton;
+    [SerializeField] private GameObject popupGameObject;
 
-    // Start is called before the first frame update
     void Start()
     {
+        #region Assertions
         Assert.IsNotNull(closeButton);
         Assert.IsNotNull(popupGameObject);
-
+        #endregion
 
         closeButton.onClick.AddListener(ClosePopup);
     }

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StaticObstacle : MonoBehaviour
 {
 
-    [SerializeField] float impactForce = 1f;
+    [SerializeField] private float impactForce = 1f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
