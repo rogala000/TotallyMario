@@ -1532,6 +1532,11 @@ PrefabInstance:
       propertyPath: sceneController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1505248047675450542, guid: 89a5d44bf7779224faf01399b27c06da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a5d44bf7779224faf01399b27c06da, type: 3}
 --- !u!114 &3006980508294435707 stripped
@@ -2666,6 +2671,11 @@ PrefabInstance:
       propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9197374768646773962, guid: e0d1bdd34170db94399a89dfa3c7afd2,
+        type: 3}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 4901984920481611120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d1bdd34170db94399a89dfa3c7afd2, type: 3}
 --- !u!1 &9197374768646773961 stripped

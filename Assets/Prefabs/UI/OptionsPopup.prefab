@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 7962714272217093187}
   - component: {fileID: 7962714272217093185}
   - component: {fileID: 7962714272217093184}
+  - component: {fileID: 3707419775897019341}
   m_Layer: 5
   m_Name: PopupGameObject
   m_TagString: Untagged
@@ -438,6 +439,25 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!95 &3707419775897019341
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962714272217093186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83b4f7235100f80429e8649f7e06c354, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7962714272451225688
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 4160661522359425543, guid: 7767748a9fc124a4699099b60a35fdf7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -175.28287
+      value: -143.71384
       objectReference: {fileID: 0}
     - target: {fileID: 4160661522359425543, guid: 7767748a9fc124a4699099b60a35fdf7,
         type: 3}

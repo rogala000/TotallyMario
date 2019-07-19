@@ -124,4 +124,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoaderGameObject: {fileID: 1505248047675450542}
-  slider: {fileID: 0}
