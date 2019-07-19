@@ -48,6 +48,10 @@ public class OptionsMenu : MonoBehaviour
 
         if (soundsOff)
         {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                AudioListener.volume = 0;
+            }
             listener.enabled = false;
             checkmark.SetActive(false);
         }
@@ -55,6 +59,10 @@ public class OptionsMenu : MonoBehaviour
         {
             listener.enabled = true;
             checkmark.SetActive(true);
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                AudioListener.volume = 1;
+            }
         }
 
     }
