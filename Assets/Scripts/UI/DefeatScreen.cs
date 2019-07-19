@@ -7,9 +7,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class DefeatScreen : MonoBehaviour
 {
-    [SerializeField] Button tryAgainButton;
-    [SerializeField] Button continueButton;
-    [SerializeField] GameObject screenView;
+    [SerializeField] private Button tryAgainButton;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private GameObject screenView;
 
     private SceneController sceneController;
     private AudioSource audioSource;

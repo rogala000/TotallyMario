@@ -8,7 +8,7 @@ public class FallingSpikes : MonoBehaviour
     [SerializeField] private Transform spikesTransform;
     [SerializeField] private float speed = 0.3f;
 
-    bool isTrapTriggered = false;
+    private bool isTrapTriggered = false;
 
     private void Start()
     {

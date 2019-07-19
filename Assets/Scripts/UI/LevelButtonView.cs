@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class LevelButtonView : MonoBehaviour
 {
 
-    [SerializeField] Button button;
-    [SerializeField] List<GameObject> stars;
-    [SerializeField] TextMeshProUGUI levelNumber;
+    [SerializeField] private Button button;
+    [SerializeField] private List<GameObject> stars;
+    [SerializeField] private TextMeshProUGUI levelNumber;
 
     public Button Button { get => button;}
     public List<GameObject> Stars { get => stars;}

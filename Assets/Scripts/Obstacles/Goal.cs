@@ -6,6 +6,7 @@ public class Goal : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
+
     private VictoryScreen victoryScreen;
 
     private void Start()

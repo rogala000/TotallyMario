@@ -4,9 +4,9 @@ using UnityEngine.Assertions;
 
 public class InGameOptions : MonoBehaviour
 {
-    [SerializeField] Button returnButton;
-    [SerializeField] Button exitButton;
-    [SerializeField] GameObject optionsView;
+    [SerializeField] private Button returnButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private GameObject optionsView;
     private SceneController sceneController;
 
     void Start()

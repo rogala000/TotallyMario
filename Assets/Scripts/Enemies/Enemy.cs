@@ -6,9 +6,9 @@ using UnityEngine.Assertions;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] float impactForce = 1f;
-    [SerializeField] Transform startRoute;
-    [SerializeField] Transform endRoute;
+    [SerializeField] private float impactForce = 1f;
+    [SerializeField] private Transform startRoute;
+    [SerializeField] private Transform endRoute;
     [SerializeField] private float speed = 1.0f;
 
     private SpriteRenderer spriteRenderer;
